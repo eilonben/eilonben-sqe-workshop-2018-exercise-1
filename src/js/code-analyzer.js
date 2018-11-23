@@ -125,7 +125,6 @@ function createGUITable(Table) {
         htmlCode += '</tr>';
     }
     htmlCode += '</table>';
-    console.log(JSON.stringify(htmlCode));
     return htmlCode;
 }
 
