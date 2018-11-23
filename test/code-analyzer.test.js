@@ -26,7 +26,7 @@ describe('basic Tests', () => {
     it ('parsing non value + value var decl' , () => {
         assert.equal(
             JSON.stringify(parseProgram(parseCode('let g = 3;\n' +
-                'let x;\n'))), '[[1,"VariableDeclarator","g","","3"],[2,"VariableDeclarator","x",""," "]]'
+                'let x;\n'))), '[[1,"VariableDeclarator","g","","3"],[2,"VariableDeclarator","x","",""]]'
         );
     });
 });
@@ -81,8 +81,8 @@ describe('function tests', () => {
                 'let low;\n' +
                 'return g;}\n' +
                 'function goo(a){\n' +
-                'return a;}\n'))),
-            '[[1,"FunctionDeclaration","foo","",""],[1,"Identifier","g","",""],[2,"VariableDeclarator","low",""," "],[3,"ReturnStatement","","","g"],[4,"FunctionDeclaration","goo","",""],[4,"Identifier","a","",""],[5,"ReturnStatement","","","a"]]'
+                'return a;}'))),
+            '[[1,"FunctionDeclaration","foo","",""],[1,"Identifier","g","",""],[2,"VariableDeclarator","low","",""],[3,"ReturnStatement","","","g"],[4,"FunctionDeclaration","goo","",""],[4,"Identifier","a","",""],[5,"ReturnStatement","","","a"]]'
         );
     });
 });
@@ -122,8 +122,7 @@ describe('final tests 2', () => {
     });
     it (' - make Table test', () => {
         assert.equal(
-            JSON.stringify(createGUITable(parseProgram(parseCode('function foo(a){\n' +
-                'let b = 3;\n' +
-                '}')))), '"<table border=1><tr><td>1</td><td>FunctionDeclaration</td><td>foo</td><td></td><td></td></tr><tr><td>1</td><td>Identifier</td><td>a</td><td></td><td></td></tr><tr><td>2</td><td>VariableDeclarator</td><td>b</td><td></td><td>3</td></tr></table>"');
+            JSON.stringify(createGUITable(parseProgram(parseCode('function foo(a) {\n' +
+                'let g = 3; }' )))), '"<table border=1><tr>\\n    <th>Line</th>\\n    <th>Type</th> \\n    <th>Name</th>\\n    <th>Condition</th>\\n    <th>Value</th>\\n  </tr><tr><td>1</td><td>FunctionDeclaration</td><td>foo</td><td></td><td></td></tr><tr><td>1</td><td>Identifier</td><td>a</td><td></td><td></td></tr><tr><td>2</td><td>VariableDeclarator</td><td>g</td><td></td><td>3</td></tr></table>"');
     });
 });

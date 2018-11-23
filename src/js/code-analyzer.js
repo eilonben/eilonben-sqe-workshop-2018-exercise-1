@@ -39,7 +39,6 @@ const parseProgram = (program) => {
     for (var i=0; i<program.body.length; i++){
         output = output.concat(parseAll(program.body[i]));
     }
-
     return output;
 };
 
@@ -126,6 +125,7 @@ function createGUITable(Table) {
         htmlCode += '</tr>';
     }
     htmlCode += '</table>';
+    console.log(JSON.stringify(htmlCode));
     return htmlCode;
 }
 
