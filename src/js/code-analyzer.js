@@ -61,7 +61,7 @@ const parseValDecl = (decl) => {
 };
 
 const parseAssignment = (expr) => {
-    return [[expr.loc.start.line,expr.expression.type,expr.expression.left.name,'',escodegen.generate(expr.expression.right)]];
+    return [[expr.loc.start.line,expr.expression.type,escodegen.generate(expr.expression.left),'',escodegen.generate(expr.expression.right)]];
 };
 
 const parseCompound = (expr) => {
